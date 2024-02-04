@@ -1,10 +1,13 @@
 use std::{env, fs};
 use std::error::Error;
 
+use colored::{Color, Colorize};
+
 pub struct Config {
     pub query: String,
     pub file_path: String,
     pub ignore_case: bool,
+    pub grep_color: String,
 }
 
 impl Config {
@@ -22,13 +25,14 @@ impl Config {
 
         let ignore_case = env::var("IGNORE_CASE").is_ok();
 
-        Ok(Config { query, file_path, ignore_case })
+        let grep_color = env::var("MINI_GREP_COLOR").unwrap_or_else(|_| String::from("White"));
+
+        Ok(Config { query, file_path, ignore_case, grep_color })
     }
 }
 
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
-
     let contents = fs::read_to_string(config.file_path)?;
 
     let results = if config.ignore_case {
@@ -38,7 +42,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     };
 
     for line in results {
-        println!("{line}");
+        println!("{}", line.color(Color::from(config.grep_color.to_string())));
     }
 
     Ok(())
