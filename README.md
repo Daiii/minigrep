@@ -8,7 +8,7 @@
 
 ## environment
 * IGNORE_CASE
-  * 配置任意value支持大小写敏感
+  * 配置任意value支持大小写不敏感
  > export IGNORE_CASE=1
 ---
 * MINI_GREP_COLOR
