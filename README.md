@@ -9,8 +9,8 @@
 ## environment
 * IGNORE_CASE
   * 配置任意value支持大小写敏感
-    * > export IGNORE_CASE=1
+ > export IGNORE_CASE=1
 ---
 * MINI_GREP_COLOR
   * 支持查询返回结果的颜色
-    * > export MINI_GREP_COLOR=yellow
+> export MINI_GREP_COLOR=yellow
