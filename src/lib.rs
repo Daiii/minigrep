@@ -28,7 +28,7 @@ impl Config {
 
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
-    // 读取文件内容
+
     let contents = fs::read_to_string(config.file_path)?;
 
     let results = if config.ignore_case {
